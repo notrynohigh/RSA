@@ -1,5 +1,5 @@
 /******************************************************************************
- * File: RSA_Ecrypt.h
+ * File: RSA_Encrypt.h
  * Author: Bean 
  * Email: notrynohigh@outlook.com
  * Every one can use this file free !

@@ -1,5 +1,5 @@
 /******************************************************************************
- * File: RSA_Ecrypt.c
+ * File: RSA_Encrypt.c
  * Author: Bean 
  * Email: notrynohigh@outlook.com
  * Every one can use this file free !
@@ -45,7 +45,10 @@ static RSA_ErrorCode_t RSA_CheckPrime(RSA_U32 n)
 	return RSA_SUCCESS;
 }
 
-
+/**
+ * if your don't have keys, your can use this function to calculate public and private key.
+ * it just print the result,so user should add the key by RSA_ConfigPublicKey and RSA_ConfigPrivateKey
+ */
 RSA_ErrorCode_t RSA_CreateKey(RSA_U32 prime_1, RSA_U32 prime_2, RSA_U32 e)
 {
 	RSA_U32 euler_n;
@@ -82,7 +85,10 @@ RSA_ErrorCode_t RSA_CreateKey(RSA_U32 prime_1, RSA_U32 prime_2, RSA_U32 e)
 	return RSA_SUCCESS;
 }
 
-
+/**
+ * config keys  
+ *{
+ */
 RSA_ErrorCode_t RSA_ConfigPublicKey(RSA_U32 n, RSA_U32 e)
 {
 	gRSA_PublicKey.n = n;
@@ -98,7 +104,14 @@ RSA_ErrorCode_t RSA_ConfigPrivateKey(RSA_U32 n, RSA_U32 d)
 	RSA_DEBUG("gRSA_PrivateKey:%d, %d\n\r", gRSA_PrivateKey.n, gRSA_PrivateKey.d);
 	return RSA_SUCCESS;
 }
+/**
+ *}
+ */
 
+/**
+ *encrypt and decrypt
+ *{
+ */
 RSA_U32 RSA_Encrypt(RSA_U8 *text , RSA_U8 *result, RSA_U32 len)
 {
 	RSA_U32 i = 0, j = 0, c = 0, tmp_c = 0;
@@ -152,6 +165,16 @@ RSA_U32 RSA_Decrypt(RSA_U8 *text, RSA_U8 *result, RSA_U32 len)
 	}
 	return i;
 }
+/**
+*}
+*/
+/******************************************************************************
+* end !
+******************************************************************************/
+
+
+
+
 
 
 
